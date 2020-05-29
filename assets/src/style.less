@@ -1,0 +1,383 @@
+@transition-speed: 100ms;
+
+html,
+body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: 'ArmandGrotesk';
+  cursor: url("../img/e-cursor.png"), e-resize;
+
+  &.yesterday {
+    cursor: url("../img/w-cursor.png"), w-resize;
+  }
+}
+
+.background_full {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  top: 0;
+  z-index: 0;
+
+  -webkit-transition: opacity @transition-speed linear;
+  -moz-transition: opacity @transition-speed linear;
+  -moz-transition: opacity @transition-speed linear;
+  -ms-transition: opacity @transition-speed linear;
+  -o-transition: opacity @transition-speed linear;
+  transition: opacity @transition-speed linear;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.wrapper_screen {
+  display: flex;
+  position: relative;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1;
+
+  .home-title_center {
+    max-width: 80vw;
+    font-family: 'Gang';
+    font-weight: normal;
+    font-size: 4.5vw;
+    color: black;
+    text-shadow: .4rem .4rem .55rem black;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 1;
+
+    -webkit-transition: color @transition-speed linear;
+    -moz-transition: color @transition-speed linear;
+    -moz-transition: color @transition-speed linear;
+    -ms-transition: color @transition-speed linear;
+    -o-transition: color @transition-speed linear;
+    transition: color @transition-speed linear;
+
+    @media screen and (max-width: 768px) {
+      font-size: 9vw;
+    }
+  }
+
+  img {
+    position: absolute;
+
+    -webkit-transition: @transition-speed -webkit-filter linear;
+    -moz-transition: @transition-speed -moz-filter linear;
+    -moz-transition: @transition-speed filter linear;
+    -ms-transition: @transition-speed -ms-filter linear;
+    -o-transition: @transition-speed -o-filter linear;
+    transition: @transition-speed filter linear, @transition-speed -webkit-filter linear;
+  }
+
+  .home-meteroid {
+    height: 36vh;
+    right: 40vw;
+    bottom: .5rem;
+
+    @media screen and (max-width: 768px) {
+      height: 32vh;
+    }
+
+    @media screen and (max-width: 480px) {
+      height: 28vh;
+    }
+  }
+
+  .home-canthandle {
+    left: 50vw;
+    height: 100vh;
+
+    @media screen and (max-width: 768px) {
+      left: 45vw;
+      height: 90vh;
+    }
+
+    @media screen and (max-width: 480px) {
+      left: 40vw;
+      height: 80vh;
+    }
+  }
+
+  &.inverted {
+    background: black;
+
+    .home-title_center {
+      color: white;
+      text-shadow: .4rem .4rem .55rem white;
+    }
+
+    img {
+      filter: invert(100%);
+    }
+
+    .background_full {
+      opacity: 0 !important;
+    }
+  }
+
+  .toc-category {
+    display: inline-block;
+    height: 11.11%;
+    padding: 0 1rem;
+    font-family: 'Gang';
+    font-size: 11vh;
+    line-height: 9vh;
+    text-transform: uppercase;
+
+    @media screen and (max-width: 480px) {
+      font-size: 9vh;
+      line-height: 6.5vh;
+    }
+
+    &.left {
+      align-self: flex-start;
+
+      @media screen and (max-width: 768px) {
+        align-self: center !important;
+      }
+    }
+
+    &.right {
+      align-self: flex-end;
+
+      @media screen and (max-width: 768px) {
+        align-self: center !important;
+      }
+    }
+
+    a {
+      position: relative;
+      text-decoration: none;
+      color: black;
+      z-index: 1;
+
+      @media screen and (max-width: 768px) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+    }
+
+    .toc-category--description {
+      display: none;
+      position: absolute;
+      left: 50%;
+      width: 100vw;
+      height: 9vh;
+      font-size: 1rem;
+      line-height: normal;
+      text-align: center;
+      //z-index: 2;
+
+      &.hover {
+        display: inline-block;
+        animation: marquee 6s infinite;
+        animation-timing-function: linear;
+      }
+
+      span {
+        width: 80%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        font-family: 'ArmandGrotesk';
+        color: black;
+        text-transform: none;
+
+        @media screen and (max-width: 768px) {
+          width: 90%;
+        }
+      }
+    }
+
+    img {
+      position: absolute;
+      z-index: 0;
+
+      &.inverted {
+        filter: invert(100%);
+      }
+    }
+  }
+}
+
+marquee {
+  width: 100vw;
+  padding: .25rem 0;
+  background: black;
+  font-size: 1rem;
+  color: white;
+  text-transform: uppercase;
+  z-index: 4;
+
+  @media screen and (max-width: 480px) {
+    margin-bottom: 1rem;
+  }
+}
+
+.toc-symposium,
+.toc-publishing {
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: top;
+  padding: 1rem;
+  width: 50vw;
+
+  @media screen and (max-width: 768px) {
+    width: 100vw;
+  }
+
+  h4 {
+    margin: 0;
+    font-family: 'Gang';
+    text-transform: uppercase;
+    font-size: 4.5vw;
+    font-weight: normal;
+    color: black;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: .1rem;
+    -webkit-text-stroke-color: black;
+
+    @media screen and (max-width: 768px) {
+      font-size: 9vw;
+    }
+  }
+
+  h6 {
+    margin: 1rem 0;
+    padding: 0 1rem;
+    font-family: 'ArmandGrotesk';
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: normal;
+    text-shadow: .4rem .4rem .55rem black;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  .toc-container {
+    width: 100%;
+    margin: 1rem 0;
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 1px solid black;
+  }
+}
+
+.toc-symposium {
+  a {
+    text-decoration: none;
+
+    h4 {
+      margin: 0 0 2rem;
+    }
+
+    &:hover h4 {
+      color: white;
+      -webkit-text-fill-color: black;
+      -webkit-text-stroke-width: 0;
+      -webkit-text-stroke-color: transparent;
+    }
+  }
+
+  .toc-container {
+    -webkit-box-shadow: 0px 1rem 1rem .75rem rgba(0, 0, 0, 0.5), 0 0 1rem .75rem rgba(0, 0, 0, 0.5) inset;
+    -moz-box-shadow: 0px 1rem 1rem .75rem rgba(0, 0, 0, 0.5), 0 0 1rem .75rem rgba(0, 0, 0, 0.5) inset;
+    box-shadow: 0px 1rem 1rem .75rem rgba(0, 0, 0, 0.5), 0 0 1rem .75rem rgba(0, 0, 0, 0.5) inset;
+
+    .videoWrapper {
+      position: relative;
+      padding-bottom: calc(var(--aspect-ratio, .5625) * 100%);
+      height: 0;
+    }
+
+    .videoWrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+}
+
+.toc-publishing .toc-container {
+  padding-bottom: 2rem;
+  -webkit-box-shadow: 0px 1rem 1rem .75rem rgba(0, 0, 0, 0.9), 0 0 1rem .75rem rgba(0, 0, 0, 0.9) inset;
+  -moz-box-shadow: 0px 1rem 1rem .75rem rgba(0, 0, 0, 0.9), 0 0 1rem .75rem rgba(0, 0, 0, 0.9) inset;
+  box-shadow: 0px 1rem 1rem .75rem rgba(0, 0, 0, 0.9), 0 0 1rem .75rem rgba(0, 0, 0, 0.9) inset;
+}
+
+.toc-meteroid {
+  position: fixed;
+  height: 24vh;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+
+  -webkit-transition: @transition-speed -webkit-filter linear;
+  -moz-transition: @transition-speed -moz-filter linear;
+  -moz-transition: @transition-speed filter linear;
+  -ms-transition: @transition-speed -ms-filter linear;
+  -o-transition: @transition-speed -o-filter linear;
+  transition: @transition-speed filter linear, @transition-speed -webkit-filter linear;
+
+  @media screen and (max-width: 768px) {
+    height: 20vh;
+  }
+
+  @media screen and (max-width: 480px) {
+    height: 16vh;
+  }
+
+  &.inverted {
+    filter: invert(100%);
+  }
+}
+
+@keyframes marquee {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateX(0%);
+  }
+
+  25% {
+    transform: translateX(-50%) translateX(-20%);
+  }
+
+  50% {
+    transform: translateX(-50%);
+  }
+
+  75% {
+    transform: translateX(-50%) translateX(20%);
+  }
+}
